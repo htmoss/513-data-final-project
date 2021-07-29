@@ -1,0 +1,34 @@
+#@begin Linear_OR #@desc Linear OpenRefine Workflow
+#@param col-name:price
+#@param newColumnName:price_num
+#@param expression:value.replace(",","")
+#@param expression:value.toNumber()
+#@param col-name:price_num
+#@param expression:value.replace("$","")
+#@in table0
+#@out table4
+#@begin core/column-addition0#@desc Create column price_num at index 40 based on column price using expression grel:value
+#@param col-name:price
+#@param newColumnName:"price_num"
+#@in table0
+#@out table1
+#@end core/column-addition0
+#@begin core/text-transform0#@desc Text transform on cells in column price_num using expression value.replace(\"$\",\"\")
+#@param col-name:price_num
+#@param expression:value.replace("$","")
+#@in table1
+#@out table2
+#@end core/text-transform0
+#@begin core/text-transform1#@desc Text transform on cells in column price_num using expression value.replace(\",\",\"\")
+#@param col-name:price_num
+#@param expression:value.replace(",","")
+#@in table2
+#@out table3
+#@end core/text-transform1
+#@begin core/text-transform2#@desc Text transform on cells in column price_num using expression value.toNumber()
+#@param col-name:price_num
+#@param expression:value.toNumber()
+#@in table3
+#@out table4
+#@end core/text-transform2
+#@end Linear_OR
