@@ -1,12 +1,14 @@
 #@begin Linear_OR #@desc Linear OpenRefine Workflow
-#@param col-name:price
-#@param newColumnName:price_num
 #@param expression:value.replace(",","")
-#@param expression:value.toNumber()
-#@param col-name:price_num
 #@param expression:value.replace("$","")
+#@param expression:value.toNumber()
+#@param col-name:price
+#@param expression:"value"
+#@param newColumnName:price_num
+#@param col-name:price_num
+#@param col-name:review_scores_value
 #@in table0
-#@out table4
+#@out table6
 #@begin core/column-addition0#@desc Create column price_num at index 40 based on column price using expression grel:value
 #@param col-name:price
 #@param newColumnName:"price_num"
@@ -31,4 +33,16 @@
 #@in table3
 #@out table4
 #@end core/text-transform2
+#@begin core/row-removal0#@desc Remove rows
+#@param col-name:review_scores_value
+#@param expression:"value"
+#@in table4
+#@out table5
+#@end core/row-removal0
+#@begin core/row-removal1#@desc Remove rows
+#@param col-name:price
+#@param expression:"value"
+#@in table5
+#@out table6
+#@end core/row-removal1
 #@end Linear_OR
